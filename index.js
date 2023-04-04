@@ -11,6 +11,7 @@ import notificationsRoutes from "./routes/notifications/notification.js";
 import notisOfTeamRoutes from "./routes/notisOfTeam/notisOfTeam.js";
 import dotenv from 'dotenv'
 dotenv.config()
+import env from "./config.js";
 
 
 app.use(express.json({limit:'20mb'}))
@@ -32,7 +33,7 @@ app.get('/',(req,res)=>{
 
 
 app.get('/greeting',(req,res)=>{
-    res.json({'message':'hello'})
+    res.json({'message':'hello',env})
 })
 
 mongoose.connect(process.env.MONGODB_URL)
