@@ -36,15 +36,15 @@ sportEventsRoute.post('/kheloNITH/createSportEvents',async(req,res)=>{
         res.json({"message":'event created succesfull'})
         const allUser = await User.find({})
         let allMail =' '
-        // for(let i=0;i<allUser.length; i++){
-        //     allMail = `${allUser[i].email}, `+allMail
-        //     if(i+1==allUser.length){
-        //         sendMail(`${creater.name} has created a new ${event.type} event. Be the first to apply`,
-        //         allMail,
-        //         'Player',
-        //         'About new event')
-        //     }
-        // }
+        for(let i=0;i<allUser.length; i++){
+            allMail = `${allUser[i].email}, `+allMail
+            if(i+1==allUser.length){
+                sendMail(`${creater.name} has created a new ${event.type} event. Be the first to apply`,
+                allMail,
+                'Player',
+                'About new event')
+            }
+        }
         
     } 
     catch (error) {
