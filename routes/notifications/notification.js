@@ -10,7 +10,7 @@ import env from "../../config.js";
 const notificationsRoutes = Router()
 
 notificationsRoutes.post('/kheloNITH/notifications/event/apply',async(req,res)=>{
-
+    
      const {token,id} = req.body
      const {cdate,ctime} = dateAndTime()
      try {
@@ -46,7 +46,6 @@ notificationsRoutes.post('/kheloNITH/notifications/event/apply',async(req,res)=>
         await event.save()
         await  notification.save()
         sendMail(`${from.name} has challenged you for your ${event.type} event`,`${to.email}`,`${to.name}`,`About your event`)
-        console.log('from event apply  '+ env)
         res.json({'message':`Applied succesfully `})
      }
       catch (error) {

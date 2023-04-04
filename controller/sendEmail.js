@@ -14,7 +14,6 @@ const sendMail = async (
   ) => {
   
 
-    console.log('from sendmail '+ env)
    
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
@@ -45,7 +44,7 @@ const sendMail = async (
                 button: {
                     color: '#22BC66', // Optional action button color
                     text: 'kheloNITH',
-                    link: WEBSITE_URL
+                    link: env.websiteUrl
                 }
             },
             outro: 'for any suggestion please contact us!'
