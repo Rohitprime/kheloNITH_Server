@@ -68,9 +68,9 @@ notificationsRoutes.get('/kheloNITH/notification/event/reject/:id',async(req,res
         await notification.save()
         from.progress.rejectedByOther+=1
         await from.save()
-        res.json({'message':`You have rejected to ${notification.from.name} `})   
         sendMail(`${to.name} has rejected your challenge for ${notification.event.type} event`,`${from.email}`,`${from.name}`
         ,'About challenge')
+        res.json({'message':`You have rejected to ${notification.from.name} `})   
  
     } 
     catch (error) {
@@ -91,9 +91,9 @@ notificationsRoutes.get('/kheloNITH/notification/event/accept/:id',async(req,res
         await notification.save()
         from.progress.acceptByOther+=1
         await from.save()
-        res.json({'message':`You have Accept the challenge from ${notification.from.name} `})    
         sendMail(`${to.name} has accepted your challenge for ${notification.event.type} event`,`${from.email}`,`${from.name}`
         ,'About your challenge')
+        res.json({'message':`You have Accept the challenge from ${notification.from.name} `})    
 
     } 
     catch (error) {

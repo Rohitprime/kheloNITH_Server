@@ -33,7 +33,6 @@ sportEventsRoute.post('/kheloNITH/createSportEvents',async(req,res)=>{
         creater.events.push(event._id)
         creater.progress.numberOfEvents +=1
         await creater.save()
-        res.json({"message":'event created succesfull'})
         const allUser = await User.find({})
         let allMail =' '
         for(let i=0;i<allUser.length; i++){
@@ -46,6 +45,7 @@ sportEventsRoute.post('/kheloNITH/createSportEvents',async(req,res)=>{
             }
         }
         
+        res.json({"message":'event created succesfull'})
     } 
     catch (error) {
         res.json({'error':error.message})

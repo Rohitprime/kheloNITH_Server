@@ -63,11 +63,11 @@ notisOfTeamRoutes.get('/kheloNITH/notification/team/reject/:id',async(req,res)=>
         notification.fromNumber = ''
         await notification.save()
         await from.save()
-        res.json({'message':`You have rejected to ${notification.from.name} `})   
         sendMail(`${to.name} has rejected your appliction for a position in ${notification.team.teamName} team`,
         `${from.email}`,
         `${from.name}`
         ,'About position in team')
+        res.json({'message':`You have rejected to ${notification.from.name} `})   
  
     } 
     catch (error) {
@@ -87,11 +87,11 @@ notisOfTeamRoutes.get('/kheloNITH/notification/team/accept/:id',async(req,res)=>
         notification.fromNumber = from.number
         await notification.save()
         await from.save()
-        res.json({'message':`You have Accept the request for a position from ${notification.from.name} `})    
         sendMail(`${to.name} has accepted your application for a position in ${notification.team.teamName} team`,
         `${from.email}`,
         `${from.name}`,
         'About your position in team')
+        res.json({'message':`You have Accept the request for a position from ${notification.from.name} `})    
 
     } 
     catch (error) {
@@ -116,6 +116,11 @@ notisOfTeamRoutes.get('/kheloNITH/notification/team/cancel/:id',async(req,res)=>
         await from.save()
 
         await Notifications.findByIdAndDelete(id)
+
+        sendMail(`${to.name} has denied your application for a position in ${notification.team.teamName} team`,
+        `${from.email}`,
+        `${from.name}`,
+        'About your position in team')
 
         res.json({'message':'cancelled the application for position in team, succesfully'})
     } 
