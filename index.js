@@ -30,6 +30,11 @@ app.get('/',(req,res)=>{
     res.json({'name':'rohit'})
 })
 
+
+app.get('/greeting',(req,res)=>{
+    res.json({'message':'hello'})
+})
+
 mongoose.connect(process.env.MONGODB_URL)
 .then(
     console.log('Database Connected')
