@@ -47,7 +47,7 @@ const sendMail = async (
                     link: env.websiteUrl
                 }
             },
-            outro: 'for any suggestion please contact us!'
+            outro: 'for any query please contact us at . Email-(rohitprime0@gmail.com) '
         }
     };
 

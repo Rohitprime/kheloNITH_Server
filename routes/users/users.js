@@ -11,15 +11,14 @@ userRoutes.post('/kheloNITH/register',async(req,res)=>{
     // console.log(req.body)
    try {
 
-     const {name,email,password,number,avtar,description,gameChoise} = req.body;
+     const {name,email,password,number,avtar,description,gameChoise,masterOf} = req.body;
      const findUser = await User.findOne({email})
      if(findUser){
       return res.json({'error':'Player Already Exist'})
      }
      const hashPassword = await bcrypt.hash(password,10);
      const upperCaseName = firstLaterUppercase(name)
-     const user = await User({name:upperCaseName,email,hashPassword,number,description,gameChoise})
-     console.log(user)
+     const user = await User({name:upperCaseName,email,hashPassword,number,description,gameChoise,masterOf})
      if(avtar){
       const avtarOfuser = await Avtar({avtar})
       await avtarOfuser.save()

@@ -40,7 +40,7 @@ sportEventsRoute.post('/kheloNITH/createSportEvents',async(req,res)=>{
                 allMail = `${allUser[i].email}, `+allMail
             }
             if(i+1==allUser.length){
-                sendMail(`${creater.name} has created a new ${event.type} event. Be the first to apply`,
+                sendMail(`${creater.name} has created a new ${event.type} event. Be the first one to apply`,
                 allMail,
                 'Player',
                 'About new event')

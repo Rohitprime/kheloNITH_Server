@@ -19,12 +19,12 @@ notificationsRoutes.post('/kheloNITH/notifications/event/apply',async(req,res)=>
         const event = await SportEvents.findById(id).populate('creater')
         const to = event.creater[0]
 
-        if(cdate > event.date){
-            res.json({'error':'Event has been ended'})
-        }
-        if(to.email === from.email){
-            return res.json({'error':"You can't play with yourself :)"})
-        }
+        // if(cdate > event.date){
+        //     res.json({'error':'Event has been ended'})
+        // }
+        // if(to.email === from.email){
+        //     return res.json({'error':"You can't play with yourself :)"})
+        // }
 
         const avaliableNotification =await Notifications.findOne({event,to,from})
         if(avaliableNotification){
