@@ -9,6 +9,7 @@ import teamRoutes from "./routes/team/team.js";
 import specificRoutes from "./routes/specific/specific.js";
 import notificationsRoutes from "./routes/notifications/notification.js";
 import notisOfTeamRoutes from "./routes/notisOfTeam/notisOfTeam.js";
+import allPlayersRoutes from "./routes/allPlayers/allPlayers.js";
 import dotenv from 'dotenv'
 dotenv.config()
 import env from "./config.js";
@@ -26,6 +27,7 @@ app.use(teamRoutes)
 app.use(specificRoutes)
 app.use(notificationsRoutes)
 app.use(notisOfTeamRoutes)
+app.use(allPlayersRoutes)
 
 app.get('/',(req,res)=>{
     res.json({'name':'rohit'})
@@ -33,7 +35,7 @@ app.get('/',(req,res)=>{
 
 
 app.get('/greeting',(req,res)=>{
-    res.json({'message':'hello',env})
+    res.json({'message':'welcome to kheloNITH server'})
 })
 
 mongoose.connect(process.env.MONGODB_URL)
