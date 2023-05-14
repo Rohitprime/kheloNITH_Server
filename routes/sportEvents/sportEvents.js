@@ -13,12 +13,12 @@ const sportEventsRoute = Router()
 sportEventsRoute.post('/kheloNITH/createSportEvents',async(req,res)=>{
     const {cdate,ctime} = dateAndTime()
     const {token,type,date,time} = req.body
-    if(cdate>date){
-       return res.json({'error':'date is not valid'})
-    }
-    if(cdate==date &&  ctime>time){
-        return res.json({'error':'time is not valid'}) 
-    }
+    // if(cdate>date){
+    //    return res.json({'error':'date is not valid'})
+    // }
+    // if(cdate==date &&  ctime>time){
+    //     return res.json({'error':'time is not valid'}) 
+    // }
 
     try {
         const user = jwt.verify(token,env.jwtSecretKey)     

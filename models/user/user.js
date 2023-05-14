@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     notifications:[{type:Schema.Types.ObjectId,ref:'Notifications'}],
     gameChoise:[{type:String}],
     rank:{type:Number},
+    masterOf:{type:String},
     progress:{
         numberOfEvents:{type:Number,default:0},
         request:{type:Number,default:0},
