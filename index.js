@@ -39,7 +39,7 @@ app.get('/greeting',(req,res)=>{
     res.json({'message':'welcome to kheloNITH server'})
 })
 
-rankingFunction()
+rankingFunction() 
 
 
 mongoose.connect(process.env.MONGODB_URL)

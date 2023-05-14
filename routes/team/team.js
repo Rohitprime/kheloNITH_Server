@@ -67,7 +67,7 @@ teamRoutes.post('/kheloNITH/team/createTeam',
                 await creater.save()
                 res.json({ 'message': 'team created successfully', team })
 
-            if(letApply){
+            if(letApply == 'yes'){
                 const allUser = await User.find({})
                 let allMail =' '
                 for(let i=0;i<allUser.length; i++){
