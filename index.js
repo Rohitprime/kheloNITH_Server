@@ -11,6 +11,7 @@ import notificationsRoutes from "./routes/notifications/notification.js";
 import notisOfTeamRoutes from "./routes/notisOfTeam/notisOfTeam.js";
 import allPlayersRoutes from "./routes/allPlayers/allPlayers.js";
 import dotenv from 'dotenv'
+import rankingFunction from "./controller/ranking.js";
 dotenv.config()
 import env from "./config.js";
 
@@ -37,6 +38,9 @@ app.get('/',(req,res)=>{
 app.get('/greeting',(req,res)=>{
     res.json({'message':'welcome to kheloNITH server'})
 })
+
+rankingFunction()
+
 
 mongoose.connect(process.env.MONGODB_URL)
 .then(

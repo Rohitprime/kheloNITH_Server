@@ -15,7 +15,7 @@ let flag = []
 teamRoutes.post('/kheloNITH/team/createTeam',
     async (req, res, next) => {
 
-        const { emailOfPlayers, notp,name } = req.body
+        const { emailOfPlayers, notp,name,letApply } = req.body
         const team = await Team({ teamName: name })
         flag.length = 0;
         for (let i = 0; i < notp; i++) {
@@ -67,6 +67,7 @@ teamRoutes.post('/kheloNITH/team/createTeam',
                 await creater.save()
                 res.json({ 'message': 'team created successfully', team })
 
+            if(letApply){
                 const allUser = await User.find({})
                 let allMail =' '
                 for(let i=0;i<allUser.length; i++){
@@ -77,7 +78,8 @@ teamRoutes.post('/kheloNITH/team/createTeam',
                         'Player',
                         'About new team')
                     }
-                }
+                }     
+            }
             }
         }
         catch (error) {

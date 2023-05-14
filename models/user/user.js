@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
     inTeams:[{type:Schema.Types.ObjectId,ref:'Team'}],
     notifications:[{type:Schema.Types.ObjectId,ref:'Notifications'}],
     gameChoise:[{type:String}],
+    rank:{type:Number},
     progress:{
         numberOfEvents:{type:Number,default:0},
         request:{type:Number,default:0},
