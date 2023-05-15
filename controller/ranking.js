@@ -11,15 +11,15 @@ const rankingFunction = async()=>{
         const request = user.progress.request
         const createdEvent = user.progress.numberOfEvents
         let percentile = 0
-        if(applied==0){
-            percentile = request
+        if(applied==0 && createdEvent!=0){
+            percentile = (request/createdEvent)-(.01*(createdEvent-request))
         }
-        else{
+        else if(applied!=0){
            if(createdEvent!=0){
-               percentile  = (request/createdEvent) + (accepted/applied)
+               percentile  = (request/createdEvent) + (accepted/applied)-(.1*(applied-accepted))-(.01*(createdEvent-request))
            }
            else{
-             percentile = (accepted/applied)
+             percentile = (accepted/applied)-(.1*(applied-accepted))
            }
         }
 
@@ -31,6 +31,7 @@ const rankingFunction = async()=>{
     // console.log(rankingArr)
     rankingArr.forEach(async(rankings,i)=>{
        
+        console.log(rankings.percentile)
         const findUser = await User.findById(rankings.id)
         findUser.rank = i+1
         await findUser.save()
